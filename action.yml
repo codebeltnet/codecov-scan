@@ -1,0 +1,29 @@
+name: Analyze with Codecov
+description: An opinionated action slightly tweaked from the original that scan and upload your project to Codecov.
+inputs:
+  token:
+    description: The Codecov generated token.
+    required: true
+  repository:
+    description: The fully qualified name of the repository, including owner, e.g. codebeltnet/savvyio.
+    required: true
+  configuration:
+    description: The path to the Codecov Yaml file. Default is .codecov/.codecov.yml.
+    required: true
+    default: '.codecov/codecov.yml'
+runs:
+  using: composite
+  steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v4
+      with:
+        path: ${{ github.workspace }}/artifacts
+        pattern: TestResults*
+
+    - name: Codecov Scanner
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ inputs.token }}
+        slug: ${{ inputs.repository }}
+        codecov_yml_path: ${{ inputs.configuration }}
+        directory: ${{ github.workspace }}/artifacts
