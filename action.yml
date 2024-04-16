@@ -27,3 +27,6 @@ runs:
         slug: ${{ inputs.repository }}
         codecov_yml_path: ${{ inputs.configuration }}
         directory: ${{ github.workspace }}/artifacts
+branding:
+  icon: 'umbrella'
+  color: 'blue'
