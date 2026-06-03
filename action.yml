@@ -15,13 +15,13 @@ runs:
   using: composite
   steps:
     - name: Download all artifacts
-      uses: actions/download-artifact@v7
+      uses: actions/download-artifact@v8
       with:
         path: ${{ github.workspace }}/artifacts
         pattern: TestResults*
 
     - name: Codecov Scanner
-      uses: codecov/codecov-action@v5
+      uses: codecov/codecov-action@v6
       with:
         token: ${{ inputs.token }}
         slug: ${{ inputs.repository }}
