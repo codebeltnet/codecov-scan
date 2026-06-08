@@ -21,7 +21,7 @@ runs:
         pattern: TestResults*
 
     - name: Codecov Scanner
-      uses: codecov/codecov-action@v6
+      uses: codecov/codecov-action@v7
       with:
         token: ${{ inputs.token }}
         slug: ${{ inputs.repository }}
