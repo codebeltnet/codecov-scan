@@ -34,6 +34,9 @@ with:
   # Optional reporting identity. Omit to retain automatic detection.
   branch: ''
   commit: ''
+  # Forwarded to the official action's fail_ci_if_error input.
+  # Existing callers retain the default false.
+  fail-on-error: false
 ```
 
 For post-release coverage, check out the exact released commit before calling this action, then set `branch: main` and `commit` to that released SHA. These optional inputs map to the official Codecov action's `override_branch` and `override_commit`. They do not change checkout. Omitting them preserves automatic detection.
