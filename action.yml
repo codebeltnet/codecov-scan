@@ -19,6 +19,10 @@ inputs:
     description: The reporting commit SHA on Codecov. Omit to retain automatic detection.
     required: false
     default: ''
+  fail-on-error:
+    description: Fail the action when Codecov reports an upload or processing error. Default is false.
+    required: false
+    default: 'false'
 runs:
   using: composite
   steps:
@@ -37,6 +41,7 @@ runs:
         directory: ${{ github.workspace }}/artifacts
         override_branch: ${{ inputs.branch }}
         override_commit: ${{ inputs.commit }}
+        fail_ci_if_error: ${{ inputs.fail-on-error }}
 branding:
   icon: 'umbrella'
   color: 'blue'
